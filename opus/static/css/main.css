@@ -203,12 +203,14 @@ iframe {
 /*------------------------------------------------------------------
 [ Login100 more ]*/
 .login100-more {
+  background: url(../images/phoenix.jpg) no-repeat center;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   width: calc(100% - 520px);
   position: relative;
   z-index: 1;
+
 }
 
 .login100-more::before {
@@ -220,8 +222,7 @@ iframe {
   height: 100%;
   top: 0;
   left: 0;
-  background: #e8519e;
-  background: linear-gradient(315deg, #f2cf07 0%, #55d284 74%);
+ 
   
   opacity: 0.8;
 }

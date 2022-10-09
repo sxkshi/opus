@@ -32,14 +32,14 @@
 <center><h1 class="custom typed-words"></h1></center>
 </div>
 <div class="d-sm-none">
-  <center><h4 class="custom2 anim" style="font-size:medium !important;"><b>END OF<br> DAY {{day}} {%if day == 4%}<br/>Thank you for<br/> participating{%endif%}</b></h4></center>
+  <center><h4 class="custom2 anim" style="font-size:medium !important;"><b>END OF<br> DAY {{day}} {%if day == 3%}<br/>Thank you for<br/> participating{%endif%}</b></h4></center>
 </div>
 
   <br>
   <br>
   <br>
 
-{%if day < 4%}
+{%if day < 3%}
 <h3 class="custom d-none d-sm-block anim">
  <center>STAY TUNED FOR DAY {{day | add:"1"}}</b></center>
 </h3>
@@ -72,7 +72,7 @@ var canvasLoader = function(){
     self.canvas = document.getElementById('canvas');                
     self.ctx = self.canvas.getContext('2d');
     self.ctx.lineWidth = .5;
-    self.ctx.strokeStyle = 'rgba(204, 204,0,0.75)';
+    self.ctx.strokeStyle = '#e45256';
     self.count = 75;
     self.rotation = 270*(Math.PI/180);      
     self.speed = 6;
@@ -117,7 +117,7 @@ loader.init();
 <script src="{%static 'profile/js/typed.js'%}"></script>
     <script>
     var typed = new Typed('.typed-words', {
-    strings: ["END OF DAY {{day}} {%if day == 4%}Thank you for participating{%endif%}"],
+    strings: ["END OF DAY {{day}} {%if day == 3%}Thank you for participating{%endif%}"],
     typeSpeed: 80,
     backSpeed: 80,
     backDelay: 4000,

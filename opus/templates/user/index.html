@@ -1,200 +1,293 @@
 {%load static%}
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, shrink-to-fit=no"
+		/>
+		<meta name="description" content="" />
+		<meta name="author" content="" />
 
-  <head>
+		<title>Hopeless Opus-ACUMEN</title>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+		<!-- Bootstrap core CSS -->
+		<link
+			href="{%static 'vendor/bootstrap/css/bootstrap.min.css'%}"
+			rel="stylesheet"
+		/>
 
-    <title>Hopeless Opus-ACUMEN</title>
+		<!-- Custom fonts for this template -->
+		<link
+			href="{%static 'vendor/fontawesome-free/css/all.min.css'%}"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css?family=Varela+Round"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+			rel="stylesheet"
+		/>
 
-    <!-- Bootstrap core CSS -->
-    <link href="{%static 'vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
+		<!-- Custom styles for this template -->
+		<link rel="icon" type="image/ico" href="{%static 'img/acumen.png'%}" />
+		<link href="{%static 'css/grayscale.css'%}" rel="stylesheet" />
+		<link
+			href="https://allfont.net/allfont.css?fonts=lumos"
+			rel="stylesheet"
+			type="text/css"
+		/>
+	</head>
 
-    <!-- Custom fonts for this template -->
-    <link href="{%static 'vendor/fontawesome-free/css/all.min.css'%}" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+	<body id="page-top">
+		<!-- Navigation -->
+		<nav
+			class="navbar navbar-expand-lg navbar-light fixed-top"
+			id="mainNav"
+			style="background-color: black"
+		>
+			<div class="container">
+				<a class="navbar-brand js-scroll-trigger" href="#">HOPELESS OPUS</a>
+				<button
+					class="navbar-toggler navbar-toggler-right"
+					type="button"
+					data-toggle="collapse"
+					data-target="#navbarResponsive"
+					aria-controls="navbarResponsive"
+					aria-expanded="false"
+					aria-label="Toggle navigation"
+				>
+					Menu
+					<i class="fas fa-bars"></i>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarResponsive">
+					<ul class="navbar-nav ml-auto">
+						{%if not user.is_authenticated%}
+						<li class="nav-item">
+							<a class="nav-link js-scroll-trigger" href="{%url 'user:login'%}"
+								>Login</a
+							>
+						</li>
+						{%endif%}
+						<li class="nav-item">
+							<a
+								class="nav-link js-scroll-trigger"
+								data-toggle="modal"
+								data-target="#Modalrules"
+								>Rules</a
+							>
+						</li>
+						<li class="nav-item">
+							<a
+								class="nav-link js-scroll-trigger"
+								data-toggle="modal"
+								data-target="#Modalcontact"
+								>Contact</a
+							>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
 
-    <!-- Custom styles for this template -->
-    <link rel="icon" type="image/ico" href="{%static 'img/acumen.png'%}" />
-    <link href="{%static 'css/grayscale.css'%}" rel="stylesheet">
-    <link href="https://allfont.net/allfont.css?fonts=lumos" rel="stylesheet" type="text/css" />
+		<style>
+			@font-face {
+				font-family: "Valorant";
+				src: url("{%static "img/Valorant__.TTF"%}");
+			}
+		</style>
 
-  </head>
+		<!-- Header -->
+		<header class="masthead">
+			<div class="container d-flex h-100 align-items-center">
+				<div class="mx-auto text-center">
+					<h1 class="mx-auto my-0 text-uppercase" style="font-family: Valorant">
+						<span class="typed-words"></span>
+					</h1>
+					<h2
+						class="text-white-50 mx-auto mt-2 mb-5"
+						style="font-family: Valorant"
+					>
+						<span id="quiz-description"></span>
+					</h2>
+					{%if not user.is_authenticated%}
+					<a
+						href="{%url 'user:signup'%}"
+						class="btn btn-primary js-scroll-trigger"
+						style="font-family: Valorant"
+						>Get Started</a
+					>
+					{%elif user.is_staff%}
+					<a
+						href="{%url 'admin:index'%}"
+						class="btn btn-primary js-scroll-trigger"
+						style="font-family: Valorant"
+						>Continue</a
+					>
+					{%else%}
+					<a
+						href="{%url 'game:index'%}"
+						class="btn btn-primary js-scroll-trigger"
+						style="font-family: Valorant"
+						>Continue</a
+					>
+					{%endif%}
+				</div>
+			</div>
+		</header>
 
-  <body id="page-top">
+		<div id="Modalrules" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header text-center">
+						<h3 class="modal-title ml-auto">Rules</h3>
+						<button type="button" class="close" data-dismiss="modal">
+							&times;
+						</button>
+					</div>
+					<div class="modal-body">
+						<ul>
+							<li>THIS IS CHOICE DRIVEN GAME</li>
+							<br />
+							<li>YOUR CHOICES DEFINE YOUR PATH WHICH DEFINE THE QUESTIONS</li>
+							<br />
+							<li>
+								THE GAME CONSISTS OF SEVERAL CHECKPOINTS SOME WITH 3 CHOICES
+								WITH A DAILY CAP OF A CERTAIN QUESTIONS.
+							</li>
+							<br />
+							<li>
+								ON CHOOSING THE <b>"BEST"</b> OPTION YOU WILL GET
+								<b>+7</b> POINTS
+							</li>
+							<br />
+							<li>
+								ON CHOOSING THE <b>"WORST"</b> ROUTE YOU WILL GET
+								<b>+3</b> POINTS
+							</li>
+							<br />
+							<li>
+								ON CHOOSING THE OPTION WHICH IS <b>"IN BETWEEN THE TWO"</b>, YOU
+								WILL GET <b>+5</b> POINTS
+							</li>
+							<br />
+							<li>
+								SOME QUESTIONS HAVE OPTIONS WHICH WILL AWARD <b>0</b> POINTS NO
+								MATTER WHICH OPTION YOU CHOOSE. THESE QUESTIONS ARE MEANT FOR
+								MAINTAINING A FLOW IN THE STORY AND ALSO TO BALANCE POINTS AMONG
+								PATHS
+							</li>
+							<li>
+								POINTS ARE AWARDED ONCE YOU ANSWER THE APTITUDE QUESTIONS
+								ASSOCIATED WITH THE STORY QUESTION, IF ANY
+							</li>
+							<br />
+							<li>
+								PLEASE UPDATE YOUR USER ID IN CASE YOU HAVEN'T. YOU CAN AVAIL
+								PRIZES ONLY IF YOU HAVE A VALID USER ID. VALIDITY OF THE USER ID
+								WILL BE CHECKED AT THE TIME OF DECLARATION OF WINNERS
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div
+			id="Modalcontact"
+			class="modal fade"
+			role="dialog"
+			data-keyboard="false"
+		>
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header text-center">
+						<h3 class="modal-title ml-auto">Contact</h3>
+						<button type="button" class="close" data-dismiss="modal">
+							&times;
+						</button>
+						<br />
+					</div>
+					<div class="modal-body">
+						<center>
+							<br />
+							<br />
+							<div class="table-responsive">
+								<table
+									class="table table-striped table-bordered table-condensed"
+								>
+									<thead>
+										<tr>
+											<td>Name</td>
+											<td>Contact number</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>Parv Kohli</td>
+											<td>+916353396427</td>
+										</tr>
+										<tr>
+											<td>Keshav Churiwal</td>
+											<td>+918820951870</td>
+										</tr>
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-      <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#">HOPELESS OPUS</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          Menu
-          <i class="fas fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            {%if not user.is_authenticated%}
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="{%url 'user:login'%}">Login</a>
-            </li>
-            {%endif%}
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" data-toggle="modal" data-target="#Modalrules">Rules</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" data-toggle="modal" data-target="#Modalcontact">Contact</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+										<tr>
+											<td colspan="2">
+												<b
+													>For Queries related to UserId, you may contact our
+													CCs</b
+												>
+											</td>
+										</tr>
+										<tr>
+											<td>Sakshi Singh</td>
+											<td>+918383993099</td>
+										</tr>
+										<tr>
+											<td>Abhinav Modi</td>
+											<td>+919199443317</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</center>
+					</div>
+				</div>
+			</div>
+		</div>
 
-    <style>
-      @font-face {
-        font-family: 'HarryPotter';
-        src: url('{%static 'img/HARRYP__.TTF'%}');
-      }
-    </style>
+		<!-- Bootstrap core JavaScript -->
+		<script src="{%static 'vendor/jquery/jquery.min.js'%}"></script>
+		<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
 
-    <!-- Header -->
-    <header class="masthead">
-      <div class="container d-flex h-100 align-items-center">
-        <div class="mx-auto text-center">
-          <h1 class="mx-auto my-0 text-uppercase" style="font-family: HarryPotter;" ><span class="typed-words"></span></h1>
-          <h2 class="text-white-50 mx-auto mt-2 mb-5" style="font-family: HarryPotter"><span id="quiz-description"></span></h2>
-          {%if not user.is_authenticated%}
-          <a href="{%url 'user:signup'%}" class="btn btn-primary js-scroll-trigger"  style="font-family: HarryPotter">Get Started</a>
-          {%elif user.is_staff%}
-          <a href="{%url 'admin:index'%}" class="btn btn-primary js-scroll-trigger"  style="font-family: HarryPotter">Continue</a>
-          {%else%}
-          <a href="{%url 'game:index'%}" class="btn btn-primary js-scroll-trigger"  style="font-family: HarryPotter">Continue</a>
-          {%endif%}
-        </div>
-      </div>
-    </header>
+		<!-- Plugin JavaScript -->
+		<script src="{%static 'vendor/jquery-easing/jquery.easing.min.js'%}"></script>
 
-<div id="Modalrules" class="modal fade" role="dialog">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header text-center">
-           
-              <h3 class="modal-title ml-auto">Rules</h3>
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-            
-          </div>
-          <div class="modal-body">
-            <ul>
-              <li>THIS IS CHOICE DRIVEN GAME</li><br>
-              <li>YOUR CHOICES DEFINE YOUR PATH WHICH DEFINE THE QUESTIONS</li><br>
-              <li>THE GAME CONSISTS OF SEVERAL CHECKPOINTS SOME WITH 3 CHOICES WITH A DAILY CAP OF A CERTAIN QUESTIONS.</li>
-              <br>
-              <li>ON CHOOSING THE <b>"BEST"</b> OPTION YOU WILL GET <b>+7</b> POINTS</li>
-              <br>
-              <li>ON CHOOSING THE <b>"WORST"</b> ROUTE YOU WILL GET <b>+3</b> POINTS</li>    
-              <br>
-              <li>ON CHOOSING THE OPTION WHICH IS <b>"IN BETWEEN THE TWO"</b>, YOU WILL GET <b>+5</b> POINTS</li>
-              <br>
-              <li>SOME QUESTIONS HAVE OPTIONS WHICH WILL AWARD <b>0</b> POINTS NO MATTER WHICH OPTION YOU CHOOSE. THESE QUESTIONS ARE MEANT FOR MAINTAINING A FLOW IN THE STORY AND ALSO TO BALANCE POINTS AMONG PATHS</li>
-              <li>POINTS ARE AWARDED ONCE YOU ANSWER THE APTITUDE QUESTIONS ASSOCIATED WITH THE STORY QUESTION, IF ANY</li>
-              <br>
-              <li>PLEASE UPDATE YOUR USER ID IN CASE YOU HAVEN'T. YOU CAN AVAIL PRIZES ONLY IF YOU HAVE A VALID USER ID. VALIDITY OF THE USER ID WILL BE CHECKED AT THE TIME OF DECLARATION OF WINNERS</li>
-              </ul>
-          </div>
-        </div>
-      </div>
-</div>
-<div id="Modalcontact" class="modal fade" role="dialog"  data-keyboard="false">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header text-center">
-            <h3 class="modal-title ml-auto">Contact</h3>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <br>
-          </div>
-          <div class="modal-body">
-            <center>
-              <br />
-              <br />
-              <div class="table-responsive">
-                <table class="table table-striped table-bordered table-condensed">
-                  <thead>
-                    <tr>
-                      <td>Name</td>
-                      <td>Contact number</td>
-                    </tr>
-                  </thead>
-                  <tbody>
-                      <tr>
-                      <td>Omkar Masur</td>
-                      <td>+919930147279</td>
-                      </tr>
-                      <tr>
-                      <td>Anmol Malhotra</td>
-                      <td>+919911519233</td>
-                      </tr>
-                      <tr>
-                        <td colspan="2"><b>For Queries related to UserId, you may contact our CCs</b></td></tr>
-                      <tr>
-                        <td>Shaurya Sinha</td>
-                        <td>+918757373564</td>
-                      </tr>
-                      <tr>
-                        <td>Anupriya Singpuri</td>
-                        <td>+919570164884</td>
-                      </tr>
-                     
-                  </tbody>
-                </table>
-              </div>  
-            </center>
+		<!-- Custom scripts for this template -->
+		<script src="{%static 'js/grayscale.min.js'%}"></script>
 
-          </div>
-        </div>
-      </div>
-</div>    
-
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="{%static 'vendor/jquery/jquery.min.js'%}"></script>
-    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="{%static 'vendor/jquery-easing/jquery.easing.min.js'%}"></script>
-
-    <!-- Custom scripts for this template -->
-    <script src="{%static 'js/grayscale.min.js'%}"></script> 
-    
-    <script src="{%static 'profile/js/typed.js'%}"></script>
-    <script>
-    var typed = new Typed('.typed-words', {
-    strings: ["Hopeless Opus"],
-    typeSpeed: 80,
-    backSpeed: 80,
-    backDelay: 4000,
-    startDelay: 500,
-    loop: false,
-    showCursor: true,
-    onComplete:()=>{
-      let typed2=new Typed('#quiz-description',{
-        strings: ["A quiz set up for and in Manipal"],
-        typeSpeed: 50,
-        backSpeed: 80,
-        backDelay: 4000,
-        
-      })
-
-    }
-    })
-    </script>
-
-
-   
-
-  </body>
-
+		<script src="{%static 'profile/js/typed.js'%}"></script>
+		<script>
+			var typed = new Typed(".typed-words", {
+				strings: ["Hopeless Opus"],
+				typeSpeed: 80,
+				backSpeed: 80,
+				backDelay: 4000,
+				startDelay: 500,
+				loop: false,
+				showCursor: true,
+				onComplete: () => {
+					let typed2 = new Typed("#quiz-description", {
+						strings: ["A quiz set up for and in Manipal"],
+						typeSpeed: 50,
+						backSpeed: 80,
+						backDelay: 4000,
+					});
+				},
+			});
+		</script>
+	</body>
 </html>
