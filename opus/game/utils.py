@@ -11,32 +11,32 @@ STAY='stay'
 DAYS={
     'day1':{
         'start_question':1,
-        'end_question':18,
-        'branches':[95,96,97,98,103,104],
-        'date':datetime.datetime(2022,10,9,00,00,00,00,tzinfo=tz('Asia/Kolkata')),
+        'end_question':22,
+        'branches':[101,102,103,104,105,106,107,108,109],
+        'date':datetime.datetime(2022,10,11,00,00,00,00,tzinfo=tz('Asia/Kolkata')),
     },
    'day2':{
-        'start_question':19,
-        'end_question':42,
-        'branches':[105,106,99,100,109,110,111,112,113,114,115,116,101,102],
-        'date':datetime.datetime(2022,10,10,tzinfo=tz('Asia/Kolkata')),
-    },
-    'day3':{
-        'start_question':43,
-        'end_question':72,
-        'branches':[117,118,119,120,107,108,121,122,123,124,137,138,125,126,139,140,127,128],
+        'start_question':23,
+        'end_question':45,
+        'branches':[110,111,112],
         'date':datetime.datetime(2022,10,11,tzinfo=tz('Asia/Kolkata')),
     },
+    'day3':{
+        'start_question':46,
+        'end_question':69,
+        'branches':[113,114,115],
+        'date':datetime.datetime(2022,10,12,tzinfo=tz('Asia/Kolkata')),
+    },
     'day4':{
-        'start_question':73,
-        'end_question':94,
+        'start_question':70,
+        'end_question':100,
         'branches':[129,130,131,132,143,144,133,134,145,146,147,148,135,136],
         'date':datetime.datetime(2022,10,12,tzinfo=tz('Asia/Kolkata')),
     },
 }
 
 
-BRANCHES=list(range(95,149))
+BRANCHES=list(range(101,115))
 
 
 
